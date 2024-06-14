@@ -77,7 +77,7 @@ const About = () => {
             </p>
             <div className="btn-holder">
               <button type="button">
-                <a href="#Techstack">Get in Touch</a>
+                <a href="#Contact">Get in Touch</a>
               </button>
             </div>
           </div>
