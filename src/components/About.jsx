@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from 'framer-motion';
 import c from "../assets/c.png";
 import cpp from "../assets/c++.png";
 import java from "../assets/java.png";
@@ -18,11 +19,19 @@ import ProgressBar from "./Section-Comp/ProgressBar";
 const About = () => {
   return (
     <>
-      <div id="About" className="section">
+      <motion.div id="About" className="section"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 1 }}
+      >
         <SectionHeader sectionName="about" />
         <hr />
         <div className="about">
-          <div className="progress-chart">
+          <motion.div className="progress-chart"
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.5, duration: 1, type: 'spring', stiffness: 100 }}
+          >
             <ProgressBar
               levelClass="l1 level"
               logos={[
@@ -65,8 +74,12 @@ const About = () => {
                 { src: rt, alt: "react" },
               ]}
             />
-          </div>
-          <div className="about-info">
+          </motion.div>
+          <motion.div className="about-info"
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.7, duration: 1, type: 'spring', stiffness: 100 }}
+          >
             <p>
               Welcome to my portfolio! I'm Mrityunjay Maharana, a Full Stack
               Developer with expertise in C, C++, Java, Python, HTML, CSS,
@@ -76,13 +89,16 @@ const About = () => {
               ideas to life through code.
             </p>
             <div className="btn-holder">
-              <button type="button">
+              <motion.button type="button"
+                whileHover={{ scale: 1.1, boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.2)" }}
+                whileTap={{ scale: 0.9 }}
+              >
                 <a href="#Techstack">Get in Touch</a>
-              </button>
+              </motion.button>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

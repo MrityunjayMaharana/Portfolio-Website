@@ -1,5 +1,5 @@
 import React from "react";
-// import TECHSTACK_DATA from '../constants/index'
+import { motion } from "framer-motion";
 import SectionHeader from "./Section-Comp/SectionHeader";
 import c from "../assets/c.png";
 import cpp from "../assets/c++.png";
@@ -15,76 +15,98 @@ import rt from "../assets/react.png";
 const Technology = () => {
   const TECHSTACK_DATA = [
     {
-      imgName : c,
-      altName : "C"
+      imgName: c,
+      altName: "C",
     },
     {
-      imgName : cpp,
-      altName : "CPP"
+      imgName: cpp,
+      altName: "CPP",
     },
     {
-      imgName : java,
-      altName : "Java"
+      imgName: java,
+      altName: "Java",
     },
     {
-      imgName : python,
-      altName : "Python"
+      imgName: python,
+      altName: "Python",
     },
     {
-      imgName : jquery,
-      altName : "JQuery"
+      imgName: jquery,
+      altName: "JQuery",
     },
     {
-      imgName : bs,
-      altName : "Boostrap"
+      imgName: bs,
+      altName: "Bootstrap",
     },
     {
-      imgName : mg,
-      altName : "MongoDB"
+      imgName: mg,
+      altName: "MongoDB",
     },
     {
-      imgName : ex,
-      altName : "Express"
+      imgName: ex,
+      altName: "Express",
     },
     {
-      imgName : rt,
-      altName : "React"
+      imgName: rt,
+      altName: "React",
     },
     {
-      imgName : node,
-      altName : "Node.js"
+      imgName: node,
+      altName: "Node.js",
     },
-  ]
+  ];
+
   return (
-    <div id="Techstack" className="section">
+    <motion.div
+      id="Techstack"
+      className="section"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ delay: 0.5, duration: 1 }}
+    >
       <SectionHeader sectionName="TechStack" />
       <hr />
       <div className="tech-stack-section">
         <div className="tech-stack">
           <div className="tech-stack-menu">
-            {
-              TECHSTACK_DATA.map(function(element) {
-                return (
-                  <div className="tech-stack-item">{element.altName}</div>
-                )
-              })
-            }
-            <div className="tech-stack-item">HTML</div>
-            <div className="tech-stack-item">CSS</div>
-            <div className="tech-stack-item">JavaScript</div>
+            {TECHSTACK_DATA.map((element, index) => (
+              <motion.div
+                className="tech-stack-item"
+                key={element.altName}
+                initial={{ x: -50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
+              >
+                {element.altName}
+              </motion.div>
+            ))}
+            {["HTML", "CSS", "JavaScript"].map((item, index) => (
+              <motion.div
+                className="tech-stack-item"
+                key={item}
+                initial={{ x: -50, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.2 + (TECHSTACK_DATA.length + index) * 0.1, duration: 0.5 }}
+              >
+                {item}
+              </motion.div>
+            ))}
           </div>
           <div className="tech-stack-logo">
-            {
-              TECHSTACK_DATA.map(function(element) {
-                return (
-                  <img src={element.imgName} alt={element.altName} />
-                )
-              })
-            }
+            {TECHSTACK_DATA.map((element, index) => (
+              <motion.img
+                src={element.imgName}
+                alt={element.altName}
+                key={element.altName}
+                initial={{ scale: 0, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.5 + index * 0.1, duration: 0.5, type: 'spring', stiffness: 100 }}
+              />
+            ))}
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

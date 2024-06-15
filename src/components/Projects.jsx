@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from 'framer-motion'
 import { FaArrowAltCircleUp } from "react-icons/fa";
 import { FaArrowAltCircleDown } from "react-icons/fa";
 import p1 from "../assets/project1.png";
@@ -15,7 +16,11 @@ import ProjectCard from "./Section-Comp/ProjectCard";
 const Projects = () => {
   return (
     <>
-      <div id="Projects" className="section">
+      <motion.div id="Projects" className="section"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 1 }}
+      >
         <SectionHeader sectionName="Projects" />
         <hr />
         <div className="projects">
@@ -72,7 +77,7 @@ const Projects = () => {
             liveProjectLink="https://mrityunjaymaharana.github.io/Age-Calculator/"
           />
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };
