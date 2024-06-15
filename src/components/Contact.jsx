@@ -1,56 +1,74 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { FaArrowAltCircleUp } from "react-icons/fa";
 import SectionHeader from "./Section-Comp/SectionHeader";
 
 const Contact = () => {
+  // Variants for staggered animations
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.5,
+        duration: 0.8,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const buttonVariants = {
+    hover: {
+      scale: 1.1,
+      transition: {
+        duration: 0.3,
+        yoyo: Infinity, // Repeat the animation
+      },
+    },
+  };
+
   return (
     <motion.div
       className="section"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ delay: 0.5, duration: 1 }}
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
     >
       <SectionHeader sectionName="Contact" />
       <hr />
       <div id="Contact" className="contact">
-        <motion.div
-          className="contact-form"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.5 }}
-        >
+        <motion.div className="contact-form" variants={containerVariants}>
           <motion.input
             type="text"
             placeholder="Enter Your Name"
-            whileFocus={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            variants={itemVariants}
           />
           <motion.input
             type="email"
             placeholder="Enter Your E-mail"
-            whileFocus={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            variants={itemVariants}
           />
           <motion.textarea
+            name=""
+            id=""
             placeholder="Write your message"
-            whileFocus={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          />
-          <motion.div
-            className="btn-holder"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.5 }}
-          >
+            variants={itemVariants}
+          ></motion.textarea>
+          <div className="btn-holder">
             <motion.button
               type="button"
-              whileHover={{ scale: 1.1, boxShadow: "0 0 8px rgba(0, 0, 0, 0.2)" }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              whileHover="hover"
+              variants={buttonVariants}
             >
               <a href="#">Get in Touch</a>
             </motion.button>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </motion.div>
