@@ -19,7 +19,7 @@ const Projects = () => {
       <motion.div id="Projects" className="section"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 1 }}
+        transition={{ delay: 1, duration: 1 }}
       >
         <SectionHeader sectionName="Projects" />
         <hr />
